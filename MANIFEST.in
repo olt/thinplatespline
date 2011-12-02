@@ -1,0 +1,5 @@
+include setup.py
+include README.rst
+
+recursive-include tps *
+recursive-exclude tps *.pyc *.so *.rej *.orig
