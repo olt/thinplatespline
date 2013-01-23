@@ -3,7 +3,7 @@ from setuptools.extension import Extension
 
 setup(
     name = "tps",
-    version = "0.1",
+    version = "0.2",
     description='Thin plate spline transformation',
     author = "Oliver Tonnhofer",
     author_email = "olt@omniscale.de",
