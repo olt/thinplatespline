@@ -33,7 +33,7 @@ class TPSError(Exception):
 cdef class TPS:
     """
     Thin Plate Spline computation class.
-    
+
     >>> t = TPS()
     >>> t.add(0, 0, 50, 50)
     >>> t.add(10, 10, 100, 100)
@@ -51,11 +51,16 @@ cdef class TPS:
         if points:
             for p in points:
                 self.add(*p)
-        
+
+    def __dealloc__(self):
+        if self._sp is not NULL:
+            del self._sp
+            self._sp = NULL
+
     def add(self, double src_x, double src_y, double dst_x, double dst_y):
         """
         Add a control point for the TPS.
-        
+
         :param src_x: x value of the source point
         :param src_y: y value of the source point
         :param dst_x: x value of the destination point
@@ -66,7 +71,7 @@ cdef class TPS:
         dst[1] = dst_y
         self._sp.add_point(src_x, src_y, dst)
         self._solved = False
-    
+
     def solve(self):
         """
         Calculate TPS. Raises TPSError if TPS could not be solved.
@@ -75,11 +80,11 @@ cdef class TPS:
         if not result:
             raise TPSError('could not solve thin plate spline')
         self._solved = True
-    
+
     def transform(self, double src_x, double src_y):
         """
         Transform from source point to destination.
-        
+
         :param src_x: x value of the source point
         :param src_y: y value of the source point
         :returns: x and y values of the transformed point
@@ -97,5 +102,5 @@ def from_control_points(points, backwards=False):
             t.add(p[2], p[3], p[0], p[1])
         else:
             t.add(*p)
-    
+
     return t
