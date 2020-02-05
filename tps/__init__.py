@@ -18,6 +18,11 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 
+######################
+#Uncoment this lines for python3.6 compability
+#import sys
+#sys.path.insert(0, "/usr/local/lib/python3.6/dist-packages/tps-0.2-py3.6-linux-x86_64.egg/tps/")
+######################
 from _tps import TPS, TPSError, from_control_points
 
 __all__ = ['TPS', 'TPSError', 'from_control_points']
