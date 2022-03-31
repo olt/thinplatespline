@@ -3,7 +3,7 @@ from setuptools.extension import Extension
 
 setup(
     name = "tps",
-    version = "0.2",
+    version = "0.3",
     description='Thin plate spline transformation',
     author = "Oliver Tonnhofer",
     author_email = "olt@omniscale.de",
@@ -15,9 +15,11 @@ setup(
         "Operating System :: OS Independent",
         "Programming Language :: C",
         "Programming Language :: C++",
-        "Programming Language :: Python :: 2.5",
-        "Programming Language :: Python :: 2.6",
-        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Topic :: Scientific/Engineering",
     ],
     test_suite = 'tps.test.test_suite',
