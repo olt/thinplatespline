@@ -25,17 +25,17 @@ from tps import TPS, TPSError, from_control_points
 class TestTPS(unittest.TestCase):
     def test_init_from_list(self):
         t = TPS([(0, 0, 50, 50), (10, 10, 100, 100)])
-        self.assertEquals(t.transform(4, 5), (72.5, 72.5))
+        self.assertEqual(t.transform(4, 5), (72.5, 72.5))
         t.add(0, 10, 70, 100)
-        self.assertEquals(t.transform(4, 5), (72.0, 75.0))
+        self.assertEqual(t.transform(4, 5), (72.0, 75.0))
     
     def test_simple(self):
         t = TPS()
         t.add(0, 0, 50, 50)
         t.add(10, 10, 100, 100)
-        self.assertEquals(t.transform(4, 5), (72.5, 72.5))
+        self.assertEqual(t.transform(4, 5), (72.5, 72.5))
         t.add(0, 10, 70, 100)
-        self.assertEquals(t.transform(4, 5), (72.0, 75.0))
+        self.assertEqual(t.transform(4, 5), (72.0, 75.0))
     
     def test_no_points(self):
         try:
@@ -62,8 +62,8 @@ class TestTPS(unittest.TestCase):
             backwards=True)
         
         results = t.transform(72, 75)
-        self.assertAlmostEquals(results[0], 4.0)
-        self.assertAlmostEquals(results[1], 5.0)
+        self.assertAlmostEqual(results[0], 4.0)
+        self.assertAlmostEqual(results[1], 5.0)
 
 def test_suite():
     return unittest.TestLoader().loadTestsFromTestCase(TestTPS)
